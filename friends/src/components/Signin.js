@@ -5,8 +5,12 @@ const Signin = (props) => {
     //const [error, setError] = useState()
     const [credentials, setCredentials] = useState({
         username: '',
-        password: ''
+        password: '', 
     });
+
+    //YOU CAN SET UP ISLOADING state and show a spinner on your form or in your button while the login 
+    //request is happening
+    //const [isLoading, setIsLoading] = useState(false)
 
     const handleChange = (e) =>{
         setCredentials({
@@ -17,6 +21,7 @@ const Signin = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // setIsLoading(true)
         api()
             .post('/api/login', credentials)
             .then((res)=>{

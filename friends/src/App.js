@@ -12,7 +12,7 @@ function App() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='signin'>Sign In</Link>
-        <Link to='friends'>Show Friends</Link>
+        <Link to='friends'>Friends</Link>
       </nav>
 
       <Route exact path='/signin' component={Signin}/>
