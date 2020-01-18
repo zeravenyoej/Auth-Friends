@@ -12,10 +12,11 @@ function App() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='signin'>Sign In</Link>
+        <Link to='friendList'>Show Friends</Link>
       </nav>
 
       <Route exact path='/signin' component={Signin}/>
-      <PrivateRoute exact path='FriendsList' component={FriendsList}/>
+      <PrivateRoute exact path='friendsList' component={FriendsList}/>
     </div>
   );
 }
