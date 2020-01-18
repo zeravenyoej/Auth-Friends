@@ -8,7 +8,7 @@ export const getToken = () =>{
 //This is an axios helper with some predefined values
 const api = () => {
     return axios.create({
-        baseURL: '',
+        baseURL: 'http://localhost:5000',
         headers: {
             Authorization: getToken(),
         }
