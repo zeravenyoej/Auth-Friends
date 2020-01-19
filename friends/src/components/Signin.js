@@ -8,10 +8,6 @@ const Signin = (props) => {
         password: '', 
     });
 
-    //YOU CAN SET UP ISLOADING state and show a spinner on your form or in your button while the login 
-    //request is happening
-    //const [isLoading, setIsLoading] = useState(false)
-
     const handleChange = (e) =>{
         setCredentials({
             ...credentials,
@@ -21,11 +17,10 @@ const Signin = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // setIsLoading(true)
         api()
             .post('/api/login', credentials)
             .then((res)=>{
-                console.log('from submit: ', res)
+                // console.log('from submit: ', res)
                 localStorage.setItem('token', res.data.payload)
                 props.history.push('/friends')
             })
@@ -36,11 +31,16 @@ const Signin = (props) => {
     }
 
     return (
-        <form>
-            <input type='username' name='username' placeholder='username' value={credentials.username} onChange={handleChange}/>
-            <input type='password' name='password' placeholder='Password' value={credentials.password} onChange={handleChange}/>
-            <button onClick={handleSubmit}>Sign Up</button>
-        </form>
+        <div>
+            <h3>For reference: </h3>
+            <p>username: Lambda School</p>
+            <p>password: {'i<3Lambd4'}</p>
+            <form>
+                <input type='username' name='username' placeholder='username' value={credentials.username} onChange={handleChange}/>
+                <input type='password' name='password' placeholder='Password' value={credentials.password} onChange={handleChange}/>
+                <button onClick={handleSubmit}>Sign Up</button>
+            </form>
+        </div>
     );
 };
 
