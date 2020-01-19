@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import api from '../utls/api';
 
-const AddForm = () => {
-    const [formValues, setFormValues] = useState({
+const AddForm = (props) => {
+    const [newFriend, setNewFriend] = useState({
         name: '',
         age: '',
         email: '',
@@ -9,20 +10,35 @@ const AddForm = () => {
     });
 
     const handleChange = (e) => {
-        setFormValues({
-            ...formValues,
+        setNewFriend({
+            ...newFriend,
             [e.target.name]: e.target.value
         })
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        api()
+            .post('/api/friends', newFriend)
+            .then((res)=>{
+                props.setFriends([...props.friends, newFriend])
+                console.log(res.data)
+                setNewFriend({
+                    name: '',
+                    age: '',
+                    email: '',
+                    id: Date.now()
+                })
+            })
+            .catch((err)=>{
+                console.log(err.response)
+            })
     };
     return (
         <form>
-            <input type='text' name='name' placeholder='Name' value={formValues.name} onChange={handleChange}/>
-            <input type='email' name='email' placeholder='Email' value={formValues.email} onChange={handleChange}/>
-            <input type='text' name='age' placeholder='Age' value={formValues.age} onChange={handleChange}/>
+            <input type='text' name='name' placeholder='Name' value={newFriend.name} onChange={handleChange}/>
+            <input type='email' name='email' placeholder='Email' value={newFriend.email} onChange={handleChange}/>
+            <input type='text' name='age' placeholder='Age' value={newFriend.age} onChange={handleChange}/>
             <button onClick={handleSubmit}>Add Friend</button>
         </form>
     );
