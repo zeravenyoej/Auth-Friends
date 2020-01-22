@@ -1,0 +1,30 @@
+import React, { useState, useEffect } from 'react';
+import api from '../utls/api';
+import FriendsCard from './FriendsCard';
+
+const FriendsList = (props) => {
+
+    const [friends, setFriends] = useState([])
+
+    useEffect(()=>{
+        api()
+            .get('/api/friends')
+            .then(res=>{
+                setFriends(res.data)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }
+    ,[])
+
+    return (
+        <div>
+            {friends.map((item)=>{
+                return <FriendsCard key={item.id} friend={item}/>
+            })}
+        </div>
+    );
+};
+
+export default FriendsList;
