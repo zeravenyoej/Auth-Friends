@@ -1,24 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';;
 import './App.css';
+import SignUp from './components/SignUp';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Friends App</h1>
+      <Route exact path='/signup' render={(props)=>{<SignUp {...props}/>}}/>
     </div>
   );
 }
