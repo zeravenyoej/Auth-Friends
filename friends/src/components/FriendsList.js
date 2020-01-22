@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utls/api';
 import FriendsCard from './FriendsCard';
+import AddForm from './AddForm';
 
 const FriendsList = (props) => {
 
@@ -20,6 +21,7 @@ const FriendsList = (props) => {
 
     return (
         <div>
+            <AddForm setFriends={setFriends} friends={friends}/>
             {friends.map((item)=>{
                 return <FriendsCard key={item.id} friend={item}/>
             })}
