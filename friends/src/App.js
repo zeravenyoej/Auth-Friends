@@ -6,6 +6,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import FriendsList from './components/FriendsList';
 import LogOut from './components/LogOut';
 import { getToken } from './utls/api';
+import UpdateForm from './components/UpdateForm';
 
 function App() {
   const signedIn = getToken()
@@ -22,8 +23,9 @@ function App() {
       </nav>
 
       <Route exact path='/signup' render={(props)=>{ return <SignUp {...props}/>}}/>
-      <ProtectedRoute exact path='/friends/' component={FriendsList}/>
-      <ProtectedRoute exact path='/logout/' component={LogOut}/>
+      <ProtectedRoute exact path='/friends' component={FriendsList}/>
+      <ProtectedRoute exact path='/logout' component={LogOut}/>
+      <ProtectedRoute exact path='/update/:id' component={UpdateForm}/>
     </div>
   );
 }

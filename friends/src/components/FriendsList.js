@@ -23,7 +23,7 @@ const FriendsList = (props) => {
         <div>
             <AddForm setFriends={setFriends} friends={friends}/>
             {friends.map((item)=>{
-                return <FriendsCard key={item.id} friend={item}/>
+                return <FriendsCard key={item.id} friend={item} friends={friends} setFriends={setFriends}/>
             })}
         </div>
     );
